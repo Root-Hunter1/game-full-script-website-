@@ -1,0 +1,350 @@
+/* ApexGamer dark mode - generated from style.css. Only active when <html class="dark">. */
+html.dark { color-scheme: dark; }
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    background: #f1f5f9;
+    color: #111827;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.theme-toggle svg { width: 22px; height: 22px; display: block; }
+html.dark .theme-toggle { background: #1a2540; color: #e6ecf7; }
+
+html.dark body {
+    background: #0b1220;
+    color: #d6dbe5;
+}
+html.dark .header {
+    border-bottom: 1px solid #242c3d;
+    background: #111a2e;
+}
+html.dark .logo span {
+    color: #518cf6;
+}
+html.dark .search-box {
+    background: #172636;
+}
+html.dark .search-box span {
+    color: #aeb7cb;
+}
+html.dark .search-box input {
+    color: #bcc3d4;
+}
+html.dark .navigation {
+    border-bottom: 1px solid #242c3d;
+    background: #111a2e;
+}
+html.dark .nav-links a {
+    color: #bcc3d4;
+}
+html.dark .nav-links a.active {
+    color: #518cf6;
+}
+html.dark .hero {
+    background: linear-gradient(
+            100deg,
+            #152b38 0%,
+            #132531 50%,
+            #1a3244 100%
+        );
+}
+html.dark .hero-small {
+    color: #aeb7cb;
+}
+html.dark .hero h1 span {
+    color: #518cf6;
+}
+html.dark .hero-content > p:not(.hero-small) {
+    color: #aeb7cb;
+}
+html.dark .quick-card {
+    border: 1px solid #242c3d;
+    background: #111a2e;
+}
+html.dark .quick-card p {
+    color: #99a4be;
+}
+html.dark .blue {
+    background: #192b43;
+}
+html.dark .green {
+    background: #1a4328;
+}
+html.dark .purple {
+    background: #1d163a;
+}
+html.dark .orange {
+    background: #46331b;
+}
+html.dark .promo-logo {
+    color: #f6d551;
+}
+html.dark .promo-text span {
+    color: #f6d551;
+}
+html.dark .section-title span {
+    color: #99a4be;
+}
+html.dark .section-title a {
+    color: #518cf6;
+}
+html.dark .game-card {
+    border: 1px solid #242c3d;
+    background: #111a2e;
+}
+html.dark .badge {
+    background: #1a4328;
+    color: #51f6c3;
+}
+html.dark .benefits {
+    background: #132032;
+}
+html.dark .benefits div {
+    border-right: 1px solid #242c3d;
+}
+html.dark .benefits span {
+    color: #99a4be;
+}
+html.dark .product-card {
+    border: 1px solid #242c3d;
+    background: #111a2e;
+}
+html.dark .product-image.diamond {
+    background: linear-gradient(
+            135deg,
+            #192b43,
+            #38bdf8
+        );
+}
+html.dark .product-card p {
+    color: #99a4be;
+}
+html.dark .product-card strong {
+    color: #518cf6;
+}
+html.dark .back-button {
+    background: #172636;
+}
+html.dark .currency-title {
+    color: #99a4be;
+}
+html.dark .currency-button {
+    border: 1px solid #242c3d;
+    background: #111a2e;
+}
+html.dark .package-card {
+    border: 1px solid #242c3d;
+    background: #111a2e;
+}
+html.dark .package-price {
+    color: #518cf6;
+}
+html.dark .loading {
+    color: #99a4be;
+}
+html.dark .footer {
+    border-top: 1px solid #242c3d;
+    color: #99a4be;
+}
+html.dark .footer strong {
+    color: #518cf6;
+}
+@media (max-width: 768px) {
+html.dark .mobile-nav {
+    background: #111a2e;
+    border-top: 1px solid #242c3d;
+}
+html.dark .mobile-nav a {
+    color: #99a4be;
+}
+html.dark .mobile-nav a:first-child {
+    color: #518cf6;
+}
+}
+html.dark .login-box {
+    background: #111a2e;
+}
+html.dark .login-box > p {
+    color: #99a4be;
+}
+html.dark .close-login {
+    color: #99a4be;
+}
+html.dark #loginForm input {
+    border: 1px solid #242c3d;
+}
+html.dark .auth-switch {
+    color: #99a4be;
+}
+html.dark .auth-switch button {
+    color: #518cf6;
+}
+html.dark .success-row .status-processing {
+    color: #62e492;
+}
+html.dark #paymentSuccessModal .status-processing {
+    color: #62e492;
+}
+html.dark .back-games-btn {
+    background: linear-gradient(
+        135deg,
+        #121e2f,
+        #142236
+    );
+    color: #d0d5e1;
+}
+html.dark .back-games-btn:hover {
+    background: linear-gradient(
+        135deg,
+        #142436,
+        #17263c
+    );
+}
+html.dark .payment-placeholder {
+    color: #808eae;
+}
+html.dark .payment-input {
+    background: #131f31;
+    color: #d7dbe5;
+}
+html.dark .payment-input::placeholder {
+    color: #8693b1;
+}
+html.dark .package-card {
+    background: #111a2e !important;
+    color: #ccd2df !important;
+    border: 1px solid #242c3d !important;
+}
+html.dark .package-amount {
+    color: #ccd2df !important;
+}
+html.dark .package-price {
+    color: #518cf6 !important;
+}
+html.dark #searchSuggestions {
+    background: #111a2e;
+    border: 1px solid #242c3d;
+}
+html.dark .search-suggestion {
+    border-bottom: 1px solid #242c3d;
+    background: #111a2e;
+    color: #d0d5e1;
+}
+html.dark .search-suggestion:hover {
+    background: #142134;
+}
+html.dark .search-suggestion-icon {
+    background: #152438;
+}
+html.dark .search-suggestion small {
+    color: #99a4be;
+}
+html.dark .search-no-result {
+    color: #99a4be;
+}
+html.dark #gameSearchSuggestions {
+    background: #111a2e;
+    border: 1px solid #242c3d;
+}
+html.dark .search-suggestion {
+    background: #111a2e;
+}
+html.dark .search-suggestion:hover {
+    background: #172636;
+}
+html.dark .search-suggestion span {
+    color: #d0d5e1;
+}
+html.dark .search-no-result {
+    color: #99a4be;
+}
+html.dark #allGamesPage {
+    background: #14222f;
+}
+html.dark .all-games-header h1 {
+    color: #d6dbe5;
+}
+html.dark .all-games-header p {
+    color: #99a4be;
+}
+html.dark .all-games-header > span {
+    color: #99a4be;
+}
+html.dark .all-games-search input {
+    border: 1px solid #242c3d;
+    background: #111a2e;
+    color: #d6dbe5;
+}
+html.dark .password-toggle {
+    color: #b0b9cd !important;
+}
+html.dark .show-more-packages-btn {
+    color: #5193f6;
+    background: #111a2e;
+}
+html.dark #totalGamesCount {
+    color: #99a4be;
+}
+html.dark body.logged-in .header-actions .profile-button {
+    background: #141e36;
+}
+html.dark .forgot-link {
+    color: #518cf6;
+}
+html.dark #forgotForm input {
+    border: 1px solid #242c3d;
+}
+@media (min-width: 769px) {
+html.dark .mobile-nav {
+    background: #111a2e;
+    border-top: 1px solid #242c3d;
+}
+html.dark .mobile-nav a {
+    color: #99a4be;
+}
+html.dark .mobile-nav a:first-child,
+html.dark .mobile-nav a.active {
+    color: #518cf6;
+}
+}
+@media (min-width: 769px) {
+html.dark .products-grid .product-image {
+    background: #172636 !important;
+}
+}
+
+/* inline style overrides */
+html.dark [style*="background:#e2e8f0"] { background: #222b40 !important; }
+html.dark [style*="background:#eef3ff"] { background: #141e36 !important; }
+html.dark [style*="background:#fff"] { background: #111a2e !important; }
+html.dark [style*="background:#fff3d6"] { background: #45391a !important; }
+html.dark [style*="background:#ffffff"] { background: #111a2e !important; }
+html.dark [style*="color:#000000"] { color: #e9ecf1 !important; }
+html.dark [style*="color:#1468ff"] { color: #518cf6 !important; }
+html.dark [style*="color:#22c55e"] { color: #62e492 !important; }
+html.dark [style*="color:#35d07f"] { color: #6adca1 !important; }
+html.dark [style*="color:#64748b"] { color: #99a4be !important; }
+html.dark [style*="color:#71839f"] { color: #8e9ab7 !important; }
+html.dark [style*="color:#7e91ad"] { color: #8592b1 !important; }
+html.dark [style*="color:#7f91ae"] { color: #8492b1 !important; }
+html.dark [style*="color:#8495b1"] { color: #828faf !important; }
+html.dark [style*="color:#ff8a00"] { color: #f6aa51 !important; }
+
+/* sun icon while dark mode is on */
+.theme-toggle .icon-sun { display: none; }
+html.dark .theme-toggle .icon-sun { display: block; }
+html.dark .theme-toggle .icon-contrast { display: none; }
+
+/* DESKTOP: bigger theme toggle */
+@media (min-width: 769px) {
+    .theme-toggle { width: 50px; height: 50px; border-radius: 14px; }
+    .theme-toggle svg { width: 32px; height: 32px; }
+}

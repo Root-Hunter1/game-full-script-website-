@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ApexGamer Admin Panel</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b1020;
+            color: #ffffff;
+        }
+
+        .admin-header {
+            padding: 20px;
+            background: #11182d;
+            border-bottom: 1px solid #26304d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .logout-btn {
+            border: 0;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #e53935;
+            color: white;
+        }
+
+        .admin-container {
+            padding: 20px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: #11182d;
+            border: 1px solid #26304d;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .stat-card h3 {
+            margin: 0 0 10px;
+            font-size: 14px;
+            color: #9aa7c7;
+        }
+
+        .stat-card strong {
+            font-size: 26px;
+        }
+
+        .admin-section {
+            background: #11182d;
+            border: 1px solid #26304d;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+        }
+
+        .admin-section h2 {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #26304d;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        th {
+            color: #9aa7c7;
+            font-size: 13px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .status-paid,
+        .status-approved {
+            background: #123d2a;
+            color: #5ee6a8;
+        }
+
+        .status-pending {
+            background: #463512;
+            color: #ffd166;
+        }
+
+        .status-processing {
+            background: #162f52;
+            color: #66b3ff;
+        }
+
+        .status-failed {
+            background: #451b1b;
+            color: #ff7777;
+        }
+
+        .approve-btn {
+            border: 0;
+            padding: 7px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            background: #1f9d68;
+            color: white;
+        }
+
+        .approve-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .refresh-btn {
+            border: 0;
+            padding: 9px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+            background: #263f72;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .empty {
+            color: #9aa7c7;
+            padding: 20px 0;
+        }
+    </style>
+
+<style>
+.order-group {
+    background: #0d1428;
+    border: 1px solid #26304d;
+    border-radius: 14px;
+    margin: 0 0 22px 0;
+    overflow: hidden;
+}
+
+.order-group-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    background: #151e36;
+    border-bottom: 1px solid #26304d;
+    font-size: 18px;
+}
+
+.order-group-icon {
+    margin-right: 8px;
+}
+
+.order-count {
+    min-width: 32px;
+    height: 28px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #263f72;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.order-table-wrap {
+    overflow-x: auto;
+}
+
+.order-table-wrap table {
+    margin: 0;
+}
+
+.order-empty {
+    padding: 28px;
+    text-align: center;
+    color: #7f8ba8;
+}
+
+.original-orders .order-group-title {
+    border-left: 4px solid #ffb020;
+}
+
+.processing-orders .order-group-title {
+    border-left: 4px solid #2196f3;
+}
+
+.completed-orders .order-group-title {
+    border-left: 4px solid #20c997;
+}
+
+.failed-orders .order-group-title {
+    border-left: 4px solid #ff5252;
+}
+
+.order-actions {
+    min-width: 230px;
+}
+
+.order-actions button {
+    margin: 2px;
+}
+
+.complete-btn {
+    background: #08a875 !important;
+}
+
+.failed-btn {
+    background: #dc3545 !important;
+}
+
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 10px;
+    }
+
+    .admin-header {
+        padding: 14px;
+    }
+
+    .admin-header h1 {
+        font-size: 18px;
+    }
+
+    .admin-section {
+        padding: 10px;
+    }
+
+    .order-group-title {
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+</style>
+
+
+<style>
+/* ===== ORDER GROUP MOBILE FIX ===== */
+
+.order-group {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.order-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.order-table-wrap table {
+    width: max-content;
+    min-width: 1100px;
+    border-collapse: collapse;
+}
+
+.order-table-wrap th,
+.order-table-wrap td {
+    white-space: nowrap;
+}
+
+.order-actions {
+    min-width: 250px;
+    white-space: nowrap;
+}
+
+.order-actions button {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+
+    .order-group {
+        margin-bottom: 16px;
+        border-radius: 12px;
+    }
+
+    .order-group-title {
+        position: sticky;
+        left: 0;
+        padding: 13px 14px;
+        font-size: 16px;
+    }
+
+    .order-table-wrap {
+        overflow-x: auto;
+        max-width: 100%;
+    }
+
+    .order-table-wrap table {
+        min-width: 1100px;
+    }
+
+    .order-table-wrap th,
+    .order-table-wrap td {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .order-actions {
+        min-width: 250px;
+    }
+
+    .order-actions button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+</style>
+
+    <link rel="stylesheet" href="/admin-mobile.css?v=20261012">
+</head>
+
+<body>
+
+<header class="admin-header">
+
+    <h1>⚡ ApexGamer Admin Panel</h1>
+
+    <button
+        class="logout-btn"
+        onclick="logout()"
+    >
+        Logout
+    </button>
+
+</header>
+
+
+<main class="admin-container">
+
+    <div
+        id="adminMessage"
+        class="message"
+    ></div>
+
+
+    <section class="admin-stats">
+
+        <div class="stat-card">
+            <h3>Total Orders</h3>
+            <strong id="totalOrders">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <h3>Pending Orders</h3>
+            <strong id="pendingOrders">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <h3>Paid Orders</h3>
+            <strong id="paidOrders">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <h3>Processing</h3>
+            <strong id="processingOrders">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <h3>Pending Deposits</h3>
+            <strong id="pendingDeposits">0</strong>
+        </div>
+
+    </section>
+
+
+    <section class="admin-section">
+
+        <h2>📦 Orders</h2>
+
+        <button
+            class="refresh-btn"
+            onclick="loadOrders()"
+        >
+            ↻ Refresh Orders
+        </button>
+        
+        <div id="ordersContainer">
+    Loading orders...
+</div>
+     
+    </section>    
+
+    <section class="admin-section">
+
+    <h2>💰 Wallet Deposits</h2>
+
+    <button
+        class="refresh-btn"
+        onclick="loadDeposits()"
+    >
+        ↻ Refresh Deposits
+    </button>
+
+        <div id="depositsContainer">
+            Loading deposits...
+        </div>
+
+    </section>
+
+    <section class="admin-section">
+<h2>🎮 Game Management</h2>
+<div id="gameManager">Loading...</div>
+</section>
+
+<section class="admin-section">
+<h2>🎁 Gift Cards</h2>
+<div id="giftManager">Loading...</div>
+</section>
+
+<section class="admin-section">
+
+<h2>💳 Payment Accounts</h2>
+
+<div id="paymentMessage"></div>
+
+<input id="paymentMethod" placeholder="Method (bKash/Nagad/USDT)">
+<input id="paymentNumber" placeholder="Account Number / Address">
+<input id="paymentType" placeholder="Type (personal/merchant)">
+<input id="paymentNetwork" placeholder="Network (TRC20/ERC20)">
+<input
+    id="paymentImage"
+    placeholder="Payment Logo URL"
+/>
+<button onclick="addPaymentAccount()">
+Add Payment Account
+</button>
+
+<div id="paymentAccounts"></div>
+</section>
+
+
+
+
+</main>
+
+
+<script src="/admin.js?v=20261004b"></script>
+
+<script src="/admin-mobile.js?v=1"></script>
+<script src="/admin-payment-edit.js?v=2"></script>
+
+<script src="/admin-games.js?v=12"></script>
+<script src="/admin-gifts.js?v=2"></script>
+<script src="/admin-contact.js?v=2"></script>
+<script src="/admin-password.js?v=1"></script>
+<script src="/admin-email.js?v=1"></script>
+</body>
+</html>

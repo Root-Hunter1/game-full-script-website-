@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    >
+
+    <title>ApexGamer – Game Top Up &amp; Gift Cards in Bangladesh</title>
+    <meta name="description" content="Buy PUBG UC, Free Fire Diamonds, Mobile Legends and gift cards instantly at the best price in Bangladesh. Fast, safe and reliable top up with ApexGamer.">
+    <link rel="canonical" href="https://apexgamer.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ApexGamer">
+    <meta property="og:title" content="ApexGamer – Game Top Up &amp; Gift Cards in Bangladesh">
+    <meta property="og:description" content="Buy PUBG UC, Free Fire Diamonds, Mobile Legends and gift cards instantly at the best price. Fast, safe and reliable.">
+    <meta property="og:url" content="https://apexgamer.com/">
+    <meta name="twitter:card" content="summary">
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=20261014a"
+    >
+    <link rel="stylesheet" href="theme-dark.css?v=3">
+    <script>
+        (function () {
+            try { if (localStorage.getItem("apex-theme") === "dark") document.documentElement.classList.add("dark"); } catch (e) {}
+            window.toggleDarkMode = function () {
+                var on = document.documentElement.classList.toggle("dark");
+                try { localStorage.setItem("apex-theme", on ? "dark" : "light"); } catch (e) {}
+            };
+        })();
+    </script>
+</head>
+
+<!-- ================= AUTH MODAL ================= -->
+
+<div id="loginModal" class="login-modal">
+
+    <div class="login-box">
+
+        <button
+            class="close-login"
+            onclick="closeLogin()"
+        >
+            ×
+        </button>
+
+        <h2 id="authTitle">
+            Welcome to ApexGamer
+        </h2>
+
+        <p id="authSubtitle">
+            Login to continue
+        </p>
+
+
+        <!-- LOGIN FORM -->
+
+        <form id="loginForm">
+
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="Email"
+                required
+            >
+
+            <div class="password-wrapper">
+    <input
+        id="loginPassword"
+        type="password"
+        placeholder="Password"
+        required
+    >
+    <button type="button" class="password-toggle" onclick="togglePassword('loginPassword', this)">👁️</button>
+</div>
+
+            <button
+                type="submit"
+                class="login-submit"
+            >
+                Login
+            </button>
+
+        
+            <a href="#" class="forgot-link" id="forgotLink" role="button">
+                Forgot password?
+            </a>
+
+        </form>
+
+
+        <!-- SIGNUP FORM -->
+
+        <form
+            id="signupForm"
+            style="display: none;"
+        >
+
+            <input
+                id="signupName"
+                type="text"
+                placeholder="Your name"
+                required
+            >
+
+            <input
+                id="signupEmail"
+                type="email"
+                placeholder="Email"
+                required
+            >
+
+            <div class="password-wrapper">
+    <input
+        id="signupPassword"
+        type="password"
+        placeholder="Password"
+        required
+    >
+    <button type="button" class="password-toggle" onclick="togglePassword('signupPassword', this)">👁️</button>
+</div>
+
+            <button
+                type="submit"
+                class="login-submit"
+            >
+                Create Account
+            </button>
+
+        </form>
+
+
+        <!-- FORGOT PASSWORD FORM -->
+
+        <form
+            id="forgotForm"
+            style="display: none;"
+        >
+
+            <input
+                id="forgotEmail"
+                type="email"
+                placeholder="Email"
+                required
+            >
+
+            <button
+                type="submit"
+                class="login-submit"
+            >
+                Send reset link
+            </button>
+
+            <a href="#" class="forgot-link" id="forgotBack" role="button">
+                Back to login
+            </a>
+
+        </form>
+
+
+        <div id="loginMessage"></div>
+
+
+        <p class="auth-switch">
+
+            <span id="switchText">
+                Don't have an account?
+            </span>
+
+            <button
+                type="button"
+                id="switchAuth"
+            >
+                Sign Up
+            </button>
+
+        </p>
+
+    </div>
+
+</div>    
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            <img src="apex-logo.png?v=5" alt="ApexGamer" style="height:1.45em;width:auto;display:inline-block;vertical-align:middle;margin:0 .2em 0 .1em;position:relative;top:-.32em"><strong>Apex</strong><span>Gamer</span>
+        </div>
+
+        <div class="search-box">
+
+            <span>⌕</span>
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search for game or product..."
+                autocomplete="off"
+            >
+
+            <div id="searchSuggestions"></div>
+
+        </div>
+      
+        <div class="header-actions">
+
+            <button class="icon-button">
+                ♧
+            </button>
+
+            <button class="icon-button">
+                🔍
+            </button>
+
+            <button class="theme-toggle" type="button" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+                <svg class="icon-contrast" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"></path></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><line x1="19.60" y1="12.00" x2="22.20" y2="12.00"></line><line x1="17.37" y1="17.37" x2="19.21" y2="19.21"></line><line x1="12.00" y1="19.60" x2="12.00" y2="22.20"></line><line x1="6.63" y1="17.37" x2="4.79" y2="19.21"></line><line x1="4.40" y1="12.00" x2="1.80" y2="12.00"></line><line x1="6.63" y1="6.63" x2="4.79" y2="4.79"></line><line x1="12.00" y1="4.40" x2="12.00" y2="1.80"></line><line x1="17.37" y1="6.63" x2="19.21" y2="4.79"></line></svg>
+            </button>
+
+            <button class="profile-button" onclick="openProfile(event)" aria-label="Profile">
+                <svg class="profile-avatar-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="50" cy="50" r="50" fill="#FF6600"/>
+                    <circle cx="50" cy="36" r="15" fill="#fff"/>
+                    <path d="M22 76c0-14 12-23 28-23s28 9 28 23c-7 8-17 12-28 12s-21-4-28-12z" fill="#fff"/>
+                </svg>
+            </button>
+
+            <button class="login-btn">
+                Login
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <nav class="navigation">
+
+        <div
+            class="all-games"
+            onclick="toggleAllGamesMenu(event)"
+            style="position:relative;cursor:pointer;"
+        >
+            ☰
+            <span>All Games</span>
+            ⌄
+
+            <div
+                id="allGamesMenu"
+                style="
+                    display:none;
+                    position:absolute;
+                    top:calc(100% + 8px);
+                    left:0;
+                    min-width:190px;
+                    background:#ffffff;
+                    border:1px solid #e5e7eb;
+                    border-radius:12px;
+                    box-shadow:0 12px 30px rgba(0,0,0,.15);
+                    padding:8px;
+                    z-index:9999;
+                "
+            >
+                <div onclick="showAllGames(event)"
+                    style="padding:11px 12px;border-radius:8px;cursor:pointer;">
+                    🎮 All Games
+                </div>
+
+                <div onclick="goHome(event)"
+                    style="padding:11px 12px;border-radius:8px;cursor:pointer;">
+                    🏠 Home
+                </div>
+
+                <div onclick="openWallet(event)"
+                    style="padding:11px 12px;border-radius:8px;cursor:pointer;">
+                    💰 Wallet
+                </div>
+
+                <div onclick="openOrders(event)"
+                    style="padding:11px 12px;border-radius:8px;cursor:pointer;">
+                    📦 Orders
+                </div>
+
+                <div onclick="openSupport(event)"
+                    style="padding:11px 12px;border-radius:8px;cursor:pointer;">
+                    🎧 Support
+                </div>
+
+                <div onclick="openSafeSecure(event)"
+                    style="padding:11px 12px;border-radius:8px;cursor:pointer;">
+                    🛡️ Safe & Secure
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-links">
+
+            <a class="active" href="#" onclick="goHome(event)">
+                Home
+            </a>
+
+            <a href="#" onclick="openWallet(event)">
+                Wallet
+            </a>
+
+            <a href="#" onclick="openOrders(event)">
+                Orders
+            </a>
+
+            <a href="#" onclick="openSupport(event)">
+                Support
+            </a>
+
+        </div>
+
+        <div class="language">
+            🌐 EN ⌄
+        </div>
+
+        <button class="nav-login">
+            Login
+        </button>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="hero-small">
+                    Fast • Safe • Reliable
+                </p>
+
+                <h1>
+                    <b style="color:#000000;font-weight:inherit;">Buy Now</b> Your
+                    <span>Favorite Games</span>
+                </h1>
+
+                <p>
+                    Get UC, Diamonds, and more —
+                    instantly, at the best price!
+                </p>
+
+                <button class="shop-btn">
+                    Shop Now →
+                </button>
+
+            </div>
+
+            <div class="hero-games">
+
+                <div class="hero-game pubg">
+                    <img src="https://i.postimg.cc/DZq1qtZV/gametiles-com-tencent-ig.jpg">
+                </div>
+
+                <div class="hero-game freefire">   
+                <img src="https://i.postimg.cc/hGRj9h74/Free-Fire-(1).webp">
+                </div>       
+                <div class="hero-game mlbb">
+                    <img src="https://i.postimg.cc/bYgtp0SQ/MV5BODhlZDk5Y2EtMGFhOS00MTQ5LTgwNjgtYTI2ZmE1Y2ZjMDE2XkEyXkFqcGcV1FMjpgUX1000-(1).jpg">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="quick-actions">
+
+            <div
+                class="quick-card"
+	        onclick="openWallet()"
+	        style="cursor:pointer;"
+	    >
+
+                <div class="quick-icon blue">
+                    💳
+                </div>
+
+                <div>
+                    <h3>Add Money</h3>
+                    <p>Your wallet</p>
+                </div>
+
+	        <b>→</b>
+
+            </div>
+
+            <div
+                class="quick-card"
+                onclick="goToGiftCards()"
+                style="cursor:pointer;"
+            >
+
+                <div class="quick-icon green">
+                    🎁
+                </div>
+
+                <div>
+                    <h3>Buy Gift Card</h3>
+                    <p>Get rewards & more</p>
+                </div>
+
+                <b>→</b>
+
+            </div>
+
+
+            <div
+                class="quick-card"
+                onclick="openSupport(event)"
+                style="cursor:pointer;"
+            >
+
+                <div class="quick-icon purple">
+                    🎧
+               </div>
+
+               <div>
+                   <h3>24/7 Support</h3>
+                   <p>We're here for you</p>
+               </div>
+
+              <b>→</b>
+
+          </div>
+
+
+            <div
+                class="quick-card"
+                onclick="openSafeSecure(event)"
+                style="cursor:pointer;"
+            >
+
+                <div class="quick-icon orange">
+                    🛡️
+                </div>
+
+                <div>
+                    <h3>Safe & Secure</h3>
+                    <p>Your trust matters</p>
+                </div>
+
+                <b>→</b>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROMO ================= -->
+
+	<section class="promo-banner">
+
+            <div class="promo-logo">
+                PUBG
+                <small>MOBILE</small>
+            </div>
+
+            <div class="promo-text">
+
+                <strong>
+                    UC AVAILABLE
+                </strong>
+
+                <span>
+                    NOW
+                </span>
+
+                <button>
+                    Buy Now →
+                </button>
+
+            </div>
+
+            <div class="promo-art">
+                🎮 💰
+            </div>
+
+        </section>
+
+
+        <!-- ================= GAMES ================= -->
+
+        <section class="content-section">
+
+            <div class="section-title">
+
+                <h2>
+                    Games
+                </h2>
+
+                <button
+                    id="viewAllGamesBtn"
+                    type="button"
+                    onclick="showAllGames(event)"
+                    style="
+                        position:relative;
+                        border:0;
+                        background:transparent;
+                        color:#1468ff;
+                        font-size:20px;
+                        font-weight:800;
+                        cursor:pointer;
+                        padding:10px 14px;
+                        min-width:125px;
+                    "
+                >
+                    <span id="totalGamesCount" style="position:absolute;right:100%;top:50%;transform:translateY(-50%);margin-right:-6px;font-size:14px !important;font-weight:700;color:#000000;white-space:nowrap;pointer-events:none;"></span>View All →
+                </button>
+
+            </div>
+
+
+            <section
+                id="gamesContainer"
+                class="games-grid"
+            >
+
+                <div class="loading">
+                    Loading games...
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ================= BENEFITS ================= -->
+
+        <section class="benefits">
+
+            <div>
+                <strong>⚡ Instant Delivery</strong>
+                <span>Within minutes</span>
+            </div>
+
+            <div>
+                <strong>🏷️ Best Price</strong>
+                <span>Low & Affordable</span>
+            </div>
+
+            <div>
+                <strong>🛡️ Trusted Platform</strong>
+                <span>100% Secure</span>
+            </div>
+
+            <div>
+                <strong>🌐 Global Coverage</strong>
+                <span>All Major Games</span>
+            </div>
+
+        </section>
+
+
+        <!-- ================= POPULAR PRODUCTS ================= -->
+
+	<section class="content-section" id="popular-products">
+
+            <div class="section-title">
+
+                <h2>
+                    Popular Products
+                </h2>
+
+                <a href="#">
+                    View All →
+                </a>
+
+            </div>
+
+
+            <div class="products-grid">
+
+                <div class="product-card">
+
+                    <div class="product-image">
+                        UC
+                    </div>
+
+                    <h3>60 UC</h3>
+
+                    <p>PUBG Mobile</p>
+
+                    <strong>৳127</strong>
+
+                    <button>
+                        Buy Now
+                    </button>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <div class="product-image">
+                        UC
+                    </div>
+
+                    <h3>325 UC</h3>
+
+                    <p>PUBG Mobile</p>
+
+                    <strong>৳618</strong>
+
+                    <button>
+                        Buy Now
+                    </button>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <div class="product-image">
+                        UC
+                    </div>
+
+                    <h3>1800 UC</h3>
+
+                    <p>PUBG Mobile</p>
+
+                    <strong>৳2847</strong>
+
+                    <button>
+                        Buy Now
+                    </button>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <div class="product-image diamond">
+                        💎
+                    </div>
+
+                    <h3>100 Diamonds</h3>
+
+                    <p>Free Fire</p>
+
+                    <strong>৳168</strong>
+
+                    <button>
+                        Buy Now
+                    </button>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <div class="product-image diamond">
+                        💎
+                    </div>
+
+                    <h3>520 Diamonds</h3>
+
+                    <p>Free Fire</p>
+
+                    <strong>৳674</strong>
+
+                    <button>
+                        Buy Now
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MOBILE NAV ================= -->
+
+    <nav class="mobile-nav">
+
+        <a class="active" onclick="goHome(event)" role="button">
+            <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.2 12 3l9 8.2V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></svg>
+            <span>Home</span>
+        </a>
+
+        <a onclick="showAllGames(event)" role="button">
+            <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8h10a4 4 0 0 1 4 4.2l-.5 3.6a2.2 2.2 0 0 1-3.9 1.1L15 15H9l-1.6 1.9a2.2 2.2 0 0 1-3.9-1.1L3 12.2A4 4 0 0 1 7 8z"/><path d="M8 10.5v3M6.5 12h3"/><circle cx="16" cy="11.2" r=".6"/><circle cx="17.8" cy="13" r=".6"/></svg>
+            <span>Games</span>
+        </a>
+
+        <a onclick="openWallet(event)" role="button">
+            <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M12 11.5v5M9.5 14h5"/></svg>
+            <span>Wallet</span>
+        </a>
+
+        <a onclick="openOrders(event)" role="button">
+            <svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4v-.5A1.5 1.5 0 0 1 10.5 2h3A1.5 1.5 0 0 1 15 3.5V4"/><path d="M8.5 10h7M8.5 13.5h7M8.5 17h4"/></svg>
+            <span>Orders</span>
+        </a>
+
+        <a onclick="openProfile(event)" role="button"> 👤
+            <span>Profile</span>
+        </a>
+
+    </nav>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <strong>
+            ApexGamer
+        </strong>
+
+        <p>
+            Fast • Safe • Reliable
+        </p>
+
+        <p>
+            © 2026 ApexGamer
+        </p>
+
+    </footer>
+
+    <script src="app.js?v=20261014a"></script>
+    <script src="gift-checkout.js?v=ctc2"></script>
+    <script src="site-contact.js?v=1"></script>
+    <script src="google-signin.js?v=1791076315"></script>
+
+
+<script>
+/* ===== PASSWORD TOGGLE ICONS ===== */
+(function () {
+    var EYE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+    var EYE_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+
+    window.togglePassword = function (inputId, button) {
+        var input = document.getElementById(inputId);
+        if (!input) return;
+
+        if (input.type === "password") {
+            input.type = "text";
+            button.innerHTML = EYE_OFF;
+            button.setAttribute("aria-label", "Hide password");
+        } else {
+            input.type = "password";
+            button.innerHTML = EYE;
+            button.setAttribute("aria-label", "Show password");
+        }
+    };
+
+    document.querySelectorAll(".password-toggle").forEach(function (b) {
+        b.innerHTML = EYE;
+        b.setAttribute("aria-label", "Show password");
+    });
+})();
+</script>
+
+</body>
+
+</html>
+

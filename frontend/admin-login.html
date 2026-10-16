@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<title>Admin Login</title>
+<style>
+body{
+    background:#0b1020;
+    color:white;
+    font-family:Arial;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.box{
+    background:#11182d;
+    padding:25px;
+    border-radius:12px;
+    width:300px;
+}
+input,button{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+}
+button{
+    background:#ff8a00;
+    border:0;
+    color:white;
+    cursor:pointer;
+}
+
+/* Password show/hide (eye icon) */
+.pw-wrap{
+    display:flex;
+    align-items:center;
+    margin:8px 0;
+}
+.pw-wrap input{
+    flex:none;
+    margin:0;
+    padding-right:46px;
+    width:calc(100% - 34px);
+}
+.pw-wrap .pw-toggle{
+    flex:none;
+    width:auto;
+    margin:0 0 0 -40px;
+    padding:4px;
+    background:transparent;
+    color:#555;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+.pw-wrap .pw-toggle svg{
+    width:22px;
+    height:22px;
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>Admin Login</h2>
+
+<input id="email" placeholder="Email">
+<div class="pw-wrap">
+<input id="password" type="password" placeholder="Password">
+<button type="button" id="pwToggle" class="pw-toggle" aria-label="Show password" title="Show password">
+<svg id="pwEyeOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+<svg id="pwEyeOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+</button>
+</div>
+
+<button onclick="adminLogin()">
+Login
+</button>
+
+<p id="msg"></p>
+
+</div>
+
+<script src="/admin-login.js?v=20261004c"></script>
+
+<script>
+(function(){
+    var input = document.getElementById("password");
+    var btn   = document.getElementById("pwToggle");
+    var eyeOn = document.getElementById("pwEyeOn");
+    var eyeOff= document.getElementById("pwEyeOff");
+
+    btn.addEventListener("click", function(){
+        var show = input.type === "password";
+        input.type = show ? "text" : "password";
+        eyeOn.style.display  = show ? "none"  : "block";
+        eyeOff.style.display = show ? "block" : "none";
+        var label = show ? "Hide password" : "Show password";
+        btn.setAttribute("aria-label", label);
+        btn.title = label;
+        input.focus();
+    });
+})();
+</script>
+
+</body>
+</html>

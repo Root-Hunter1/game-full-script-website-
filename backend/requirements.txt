@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sqlalchemy
+asyncpg
+alembic
+pydantic-settings
+httpx
+python-jose
+bcrypt
+aiosmtplib
+email-validator
+python-multipart
+greenlet

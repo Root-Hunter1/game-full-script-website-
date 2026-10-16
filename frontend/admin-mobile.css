@@ -1,0 +1,902 @@
+/* =====================================================================
+   ADMIN PANEL - MOBILE ONLY (screen 768px or narrower)
+   Everything below is inside @media, so desktop is NOT affected.
+   ===================================================================== */
+@media (max-width: 768px) {
+
+    /* ---------- Top stats: 2 per row, compact ---------- */
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+    .stat-card {
+        padding: 12px 14px;
+        border-radius: 10px;
+    }
+    .stat-card h3 {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+    .stat-card strong {
+        font-size: 22px;
+    }
+    .stat-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+
+    /* ---------- Orders + Deposits: table rows become cards ---------- */
+    .order-table-wrap {
+        overflow-x: visible !important;
+    }
+
+    .order-table-wrap table,
+    #depositsContainer table {
+        display: block;
+        width: 100% !important;
+        min-width: 0 !important;
+        border-collapse: separate;
+    }
+
+    .order-table-wrap thead,
+    #depositsContainer thead {
+        display: none;
+    }
+
+    .order-table-wrap tbody,
+    #depositsContainer tbody {
+        display: block;
+        padding: 10px 0 0;
+    }
+
+    .order-table-wrap tr,
+    #depositsContainer tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 12px;
+        background: #11182d;
+        border: 1px solid #26304d;
+        border-radius: 12px;
+        padding: 12px;
+        margin: 0 10px 10px;
+    }
+
+    #depositsContainer tr {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .order-table-wrap td,
+    #depositsContainer td {
+        display: block;
+        border: 0;
+        padding: 0;
+        min-width: 0;
+        font-size: 14px;
+        white-space: normal !important;
+        word-break: break-word;
+    }
+
+    .order-table-wrap td::before,
+    #depositsContainer td::before {
+        display: block;
+        font-size: 11px;
+        color: #9aa7c7;
+        font-weight: normal;
+        margin-bottom: 2px;
+    }
+
+    /* empty cells ("-") are hidden so each card stays short */
+    .order-table-wrap td.cell-empty,
+    #depositsContainer td.cell-empty {
+        display: none;
+    }
+
+    /* plain (uncoloured) status text lines up with the other values */
+    .order-table-wrap td > .status:not(.status-pending):not(.status-paid):not(.status-approved):not(.status-processing):not(.status-failed) {
+        padding-left: 0;
+    }
+
+    /* ----- Orders: labels ----- */
+    .order-table-wrap td:nth-child(1)::before  { content: "Order"; }
+    .order-table-wrap td:nth-child(2)::before  { content: "Game"; }
+    .order-table-wrap td:nth-child(3)::before  { content: "Player ID"; }
+    .order-table-wrap td:nth-child(4)::before  { content: "Package"; }
+    .order-table-wrap td:nth-child(5)::before  { content: "Quantity"; }
+    .order-table-wrap td:nth-child(6)::before  { content: "Total Price"; }
+    .order-table-wrap td:nth-child(7)::before  { content: "Payment"; }
+    .order-table-wrap td:nth-child(8)::before  { content: "Transaction ID"; }
+    .order-table-wrap td:nth-child(9)::before  { content: "Supplier"; }
+    .order-table-wrap td:nth-child(10)::before { content: "Supplier Order"; }
+    .order-table-wrap td:nth-child(11)::before { content: "Supplier Status"; }
+    .order-table-wrap td:nth-child(12)::before { content: "Order Status"; }
+    .order-table-wrap td:nth-child(13)::before { content: "Date"; }
+    .order-table-wrap td:nth-child(14)::before { content: "Action"; }
+
+    /* ----- Orders: card order ----- */
+    .order-table-wrap td:nth-child(1)  { order: 1;  font-size: 16px; font-weight: bold; }
+    .order-table-wrap td:nth-child(12) { order: 2; }
+    .order-table-wrap td:nth-child(2)  { order: 3; }
+    .order-table-wrap td:nth-child(3)  { order: 4; }
+    .order-table-wrap td:nth-child(4)  { order: 5; }
+    .order-table-wrap td:nth-child(5)  { order: 6; }
+    .order-table-wrap td:nth-child(6)  { order: 7; }
+    .order-table-wrap td:nth-child(7)  { order: 8; }
+    .order-table-wrap td:nth-child(8)  { order: 9;  grid-column: 1 / -1; }
+    .order-table-wrap td:nth-child(9)  { order: 10; }
+    .order-table-wrap td:nth-child(11) { order: 11; }
+    .order-table-wrap td:nth-child(10) { order: 12; grid-column: 1 / -1; }
+    .order-table-wrap td:nth-child(13) { order: 13; grid-column: 1 / -1; }
+    .order-table-wrap td:nth-child(14) { order: 14; grid-column: 1 / -1; }
+
+    /* ----- Orders: action buttons ----- */
+    .order-table-wrap td.order-actions {
+        min-width: 0 !important;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .order-table-wrap td.order-actions.cell-empty {
+        display: none;
+    }
+    .order-table-wrap td.order-actions::before {
+        flex: 0 0 100%;
+        margin-bottom: 0;
+    }
+    .order-table-wrap td.order-actions button {
+        flex: 1 1 130px;
+        margin: 0;
+        min-height: 42px;
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    /* ----- Deposits: labels ----- */
+    #depositsContainer td:nth-child(1)::before { content: "Deposit"; }
+    #depositsContainer td:nth-child(2)::before { content: "User ID"; }
+    #depositsContainer td:nth-child(3)::before { content: "Amount"; }
+    #depositsContainer td:nth-child(4)::before { content: "Payment Method"; }
+    #depositsContainer td:nth-child(5)::before { content: "Transaction ID"; }
+    #depositsContainer td:nth-child(6)::before { content: "Status"; }
+    #depositsContainer td:nth-child(7)::before { content: "Date"; }
+    #depositsContainer td:nth-child(8)::before { content: "Action"; }
+
+    /* ----- Deposits: card order ----- */
+    #depositsContainer td:nth-child(1) { order: 1; font-size: 16px; font-weight: bold; }
+    #depositsContainer td:nth-child(6) { order: 2; }
+    #depositsContainer td:nth-child(2) { order: 3; }
+    #depositsContainer td:nth-child(3) { order: 4; }
+    #depositsContainer td:nth-child(4) { order: 5; }
+    #depositsContainer td:nth-child(7) { order: 6; }
+    #depositsContainer td:nth-child(5) { order: 7; grid-column: 1 / -1; }
+    #depositsContainer td:nth-child(8) { order: 8; grid-column: 1 / -1; }
+
+    #depositsContainer td:nth-child(8) button {
+        width: 100%;
+        min-height: 42px;
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    /* ---------- Payment accounts form ---------- */
+    #paymentMethod,
+    #paymentNumber,
+    #paymentType,
+    #paymentNetwork,
+    #paymentImage {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+        margin: 0 0 8px;
+        font-size: 15px;
+    }
+
+    button[onclick="addPaymentAccount()"] {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin: 4px 0 12px;
+        border: 0;
+        border-radius: 8px;
+        background: #263f72;
+        color: #fff;
+        font-size: 15px;
+    }
+
+    .payment-card {
+        padding: 12px;
+        margin-top: 8px;
+        border: 1px solid #26304d;
+        border-radius: 10px;
+        word-break: break-word;
+    }
+
+    .payment-card button {
+        margin-top: 8px;
+        padding: 8px 14px;
+    }
+
+    /* ---------- Misc ---------- */
+    .refresh-btn {
+        width: 100%;
+    }
+}
+
+
+/* ===== ADMIN MOBILE SIZE FIX (desktop unchanged) ===== */
+@media (max-width: 768px) {
+    body .admin-header h1 {
+        font-size: 18px !important;
+        line-height: 1.2 !important;
+    }
+
+    body .admin-header {
+        padding: 12px 14px !important;
+        gap: 10px;
+    }
+
+    body .logout-btn {
+        padding: 8px 14px !important;
+        font-size: 13px !important;
+        flex-shrink: 0;
+    }
+
+    body .admin-container {
+        padding: 10px !important;
+    }
+
+    body .stat-card h3 {
+        font-size: 12px !important;
+        margin: 0 0 6px !important;
+    }
+
+    body .stat-card strong {
+        font-size: 22px !important;
+    }
+
+    body .admin-section h2,
+    body .admin-section h3 {
+        font-size: 17px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 10px !important;
+    }
+
+    body .admin-section {
+        padding: 12px !important;
+    }
+
+    body .order-group-title {
+        font-size: 15px !important;
+        padding: 12px 14px !important;
+    }
+
+    body .order-count {
+        height: 24px !important;
+        min-width: 28px !important;
+        font-size: 12px !important;
+    }
+
+    body .refresh-btn {
+        padding: 10px 14px !important;
+        font-size: 14px !important;
+    }
+
+    body .order-table-wrap td,
+    body #depositsContainer td {
+        overflow-wrap: anywhere;
+    }
+}
+/* ===== END ADMIN MOBILE SIZE FIX ===== */
+
+
+/* =====================================================================
+   APEX NEON-GLASS THEME  (visual only - no layout/logic changes)
+   START-APEX-THEME
+   ===================================================================== */
+
+:root {
+    --ax-bg: #070b17;
+    --ax-line: rgba(255, 255, 255, 0.08);
+    --ax-text-dim: #8c98bd;
+    --ax-blue: #5b8cff;
+    --ax-violet: #8a6bff;
+    --ax-green: #22d3a6;
+    --ax-amber: #ffb020;
+    --ax-red: #ff5d6c;
+    --ax-cyan: #38d5ff;
+}
+
+html,
+body {
+    overflow-x: clip;
+}
+
+body {
+    background: var(--ax-bg);
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* soft aurora background (fixed, behind everything) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(600px 400px at 8% -5%, rgba(91, 140, 255, 0.22), transparent 70%),
+        radial-gradient(520px 380px at 100% 12%, rgba(138, 107, 255, 0.18), transparent 70%),
+        radial-gradient(560px 420px at 50% 110%, rgba(34, 211, 166, 0.12), transparent 70%);
+}
+
+/* ---------- Header ---------- */
+.admin-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(9, 13, 28, 0.72);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid var(--ax-line);
+}
+
+.admin-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ax-blue), var(--ax-green), transparent);
+    opacity: 0.8;
+}
+
+.admin-header h1 {
+    letter-spacing: 0.2px;
+    font-weight: 800;
+}
+
+.logout-btn {
+    background: linear-gradient(135deg, #ff5d6c, #e5253d);
+    border-radius: 999px;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(255, 70, 90, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.logout-btn:active {
+    transform: scale(0.95);
+}
+
+/* ---------- Stat cards ---------- */
+.stat-card {
+    --accent: var(--ax-blue);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.015));
+    border: 1px solid var(--ax-line);
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.stat-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.stat-card::after {
+    content: "";
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.14;
+    filter: blur(22px);
+    pointer-events: none;
+}
+
+.stat-card:nth-child(1) { --accent: var(--ax-blue); }
+.stat-card:nth-child(2) { --accent: var(--ax-amber); }
+.stat-card:nth-child(3) { --accent: var(--ax-green); }
+.stat-card:nth-child(4) { --accent: var(--ax-cyan); }
+.stat-card:nth-child(5) { --accent: var(--ax-violet); }
+
+.stat-card h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--ax-text-dim);
+    font-weight: 600;
+}
+
+body .admin-stats .stat-card strong {
+    display: block;
+    font-size: 30px !important;
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(180deg, #ffffff, var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* ---------- Sections ---------- */
+.admin-section {
+    background: rgba(15, 21, 42, 0.62);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--ax-line);
+    border-radius: 20px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.38);
+}
+
+.admin-section h2 {
+    font-weight: 800;
+    letter-spacing: 0.2px;
+}
+
+#adminMessage {
+    border-radius: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+.refresh-btn {
+    background: linear-gradient(135deg, var(--ax-blue), var(--ax-violet));
+    border-radius: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    box-shadow: 0 8px 22px rgba(91, 140, 255, 0.32);
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.refresh-btn:active {
+    transform: scale(0.98);
+    filter: brightness(1.1);
+}
+
+/* ---------- Order groups ---------- */
+.order-group {
+    background: rgba(7, 11, 24, 0.55);
+    border: 1px solid var(--ax-line);
+    border-radius: 18px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.order-group-title {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--ax-line);
+    font-weight: 700;
+}
+
+.original-orders .order-group-title {
+    background: linear-gradient(90deg, rgba(255, 176, 32, 0.16), transparent 75%);
+}
+.processing-orders .order-group-title {
+    background: linear-gradient(90deg, rgba(56, 140, 255, 0.16), transparent 75%);
+}
+.completed-orders .order-group-title {
+    background: linear-gradient(90deg, rgba(34, 211, 166, 0.16), transparent 75%);
+}
+.failed-orders .order-group-title {
+    background: linear-gradient(90deg, rgba(255, 93, 108, 0.16), transparent 75%);
+}
+
+.order-count {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #fff;
+}
+.original-orders .order-count   { background: rgba(255, 176, 32, 0.16); border-color: rgba(255, 176, 32, 0.45); color: var(--ax-amber); }
+.processing-orders .order-count { background: rgba(56, 140, 255, 0.16); border-color: rgba(56, 140, 255, 0.45); color: #7db4ff; }
+.completed-orders .order-count  { background: rgba(34, 211, 166, 0.16); border-color: rgba(34, 211, 166, 0.45); color: var(--ax-green); }
+.failed-orders .order-count     { background: rgba(255, 93, 108, 0.16); border-color: rgba(255, 93, 108, 0.45); color: var(--ax-red); }
+
+.order-empty {
+    color: var(--ax-text-dim);
+}
+
+/* ---------- Status pills ---------- */
+.status {
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+}
+
+.status[class*="status-"]::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    vertical-align: middle;
+    box-shadow: 0 0 8px currentColor;
+}
+
+.status-paid,
+.status-approved {
+    background: rgba(34, 211, 166, 0.14);
+    color: #3ee6b4;
+}
+.status-pending {
+    background: rgba(255, 176, 32, 0.14);
+    color: #ffc247;
+}
+.status-processing {
+    background: rgba(56, 140, 255, 0.16);
+    color: #7db4ff;
+}
+.status-processing::before {
+    animation: axPulse 1.4s ease-in-out infinite;
+}
+.status-completed {
+    background: rgba(34, 211, 166, 0.14);
+    color: #3ee6b4;
+}
+.status-failed,
+.status-delivery_failed {
+    background: rgba(255, 93, 108, 0.15);
+    color: #ff7b88;
+}
+
+/* ---------- Action buttons ---------- */
+button.approve-btn {
+    background: linear-gradient(135deg, #1fbf86, #12926a);
+    border-radius: 10px;
+    font-weight: 700;
+    box-shadow: 0 6px 16px rgba(31, 191, 134, 0.28);
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.order-actions button.approve-btn.failed-btn {
+    background: linear-gradient(135deg, #ff5d6c, #d62a40) !important;
+    box-shadow: 0 6px 16px rgba(255, 93, 108, 0.28);
+}
+
+.order-actions button.approve-btn.complete-btn {
+    background: linear-gradient(135deg, #22d3a6, #0b9f79) !important;
+}
+
+button.approve-btn:active {
+    transform: scale(0.96);
+    filter: brightness(1.12);
+}
+
+/* ---------- Payment accounts form ---------- */
+#paymentMethod,
+#paymentNumber,
+#paymentType,
+#paymentNetwork,
+#paymentImage {
+    background: rgba(7, 11, 24, 0.75);
+    color: #fff;
+    border: 1px solid #2b3658;
+    border-radius: 12px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#paymentMethod:focus,
+#paymentNumber:focus,
+#paymentType:focus,
+#paymentNetwork:focus,
+#paymentImage:focus {
+    border-color: var(--ax-blue);
+    box-shadow: 0 0 0 3px rgba(91, 140, 255, 0.22);
+}
+
+#paymentMethod::placeholder,
+#paymentNumber::placeholder,
+#paymentType::placeholder,
+#paymentNetwork::placeholder,
+#paymentImage::placeholder {
+    color: #66739b;
+}
+
+button[onclick="addPaymentAccount()"] {
+    background: linear-gradient(135deg, var(--ax-blue), var(--ax-violet));
+    color: #fff;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-weight: 700;
+    box-shadow: 0 8px 22px rgba(91, 140, 255, 0.3);
+}
+
+.payment-card {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+    border: 1px solid var(--ax-line);
+    border-radius: 14px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+    line-height: 1.5;
+}
+
+.payment-card b {
+    color: #fff;
+    font-size: 15px;
+}
+
+.payment-card button {
+    background: rgba(91, 140, 255, 0.16);
+    color: #9db9ff;
+    border: 1px solid rgba(91, 140, 255, 0.4);
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+/* ---------- Desktop-only touches ---------- */
+@media (min-width: 769px) {
+    #paymentMethod,
+    #paymentNumber,
+    #paymentType,
+    #paymentNetwork,
+    #paymentImage {
+        margin: 0 8px 10px 0;
+    }
+
+    button[onclick="addPaymentAccount()"] {
+        margin-bottom: 14px;
+    }
+
+    .payment-card {
+        display: inline-block;
+        min-width: 230px;
+        margin: 8px 10px 0 0;
+        padding: 14px 16px;
+        vertical-align: top;
+    }
+
+    .admin-section h2 {
+        margin-bottom: 14px;
+    }
+
+    th {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 11px;
+        color: var(--ax-text-dim);
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    td {
+        border-bottom-color: rgba(255, 255, 255, 0.06);
+    }
+}
+
+@media (hover: hover) and (min-width: 769px) {
+    .order-table-wrap tbody tr:hover,
+    #depositsContainer tbody tr:hover {
+        background: rgba(91, 140, 255, 0.07);
+    }
+}
+
+/* ---------- Mobile cards ---------- */
+@media (max-width: 768px) {
+
+    .order-table-wrap tbody tr,
+    #depositsContainer tbody tr {
+        position: relative;
+        background: linear-gradient(165deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+        border: 1px solid var(--ax-line);
+        border-left: 4px solid #3b4770;
+        border-radius: 16px;
+        padding: 14px;
+        gap: 12px 14px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+        animation: axRise 0.45s ease both;
+    }
+
+    /* card accent colour follows the order status */
+    .order-table-wrap tbody tr:has(td:nth-child(12) .status-paid)       { border-left-color: var(--ax-green); }
+    .order-table-wrap tbody tr:has(td:nth-child(12) .status-pending)    { border-left-color: var(--ax-amber); }
+    .order-table-wrap tbody tr:has(td:nth-child(12) .status-processing) { border-left-color: #3d8bff; }
+    .order-table-wrap tbody tr:has(td:nth-child(12) .status-completed)  { border-left-color: var(--ax-green); }
+    .order-table-wrap tbody tr:has(td:nth-child(12) .status-failed),
+    .order-table-wrap tbody tr:has(td:nth-child(12) .status-delivery_failed) { border-left-color: var(--ax-red); }
+
+    #depositsContainer tbody tr:has(td:nth-child(6) .status-pending)  { border-left-color: var(--ax-amber); }
+    #depositsContainer tbody tr:has(td:nth-child(6) .status-approved) { border-left-color: var(--ax-green); }
+    #depositsContainer tbody tr:has(td:nth-child(6) .status-failed)   { border-left-color: var(--ax-red); }
+
+    /* small caps labels */
+    .order-table-wrap td::before,
+    #depositsContainer td::before {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #7f8cb3;
+        font-weight: 600;
+        margin-bottom: 3px;
+    }
+
+    /* highlight key values */
+    .order-table-wrap td:nth-child(1),
+    #depositsContainer td:nth-child(1) {
+        color: #a9bcff;
+    }
+
+    .order-table-wrap td:nth-child(6),
+    #depositsContainer td:nth-child(3) {
+        color: #4ee8b6;
+        font-weight: 800;
+        font-size: 16px;
+    }
+
+    .order-table-wrap td:nth-child(8),
+    #depositsContainer td:nth-child(5) {
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 13px;
+        background: rgba(0, 0, 0, 0.28);
+        border: 1px dashed rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 8px 10px;
+        color: #cfd8ff;
+    }
+
+    .order-table-wrap td:nth-child(8)::before,
+    #depositsContainer td:nth-child(5)::before {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .order-table-wrap td.order-actions {
+        padding-top: 4px;
+        border-top: 1px solid var(--ax-line);
+        padding-top: 12px;
+    }
+
+    #depositsContainer td:nth-child(8) {
+        border-top: 1px solid var(--ax-line);
+        padding-top: 12px;
+    }
+
+    .stat-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ---------- Animations ---------- */
+@keyframes axPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.35; transform: scale(0.7); }
+}
+
+@keyframes axRise {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.stat-card {
+    animation: axRise 0.5s ease both;
+}
+.stat-card:nth-child(2) { animation-delay: 0.05s; }
+.stat-card:nth-child(3) { animation-delay: 0.10s; }
+.stat-card:nth-child(4) { animation-delay: 0.15s; }
+.stat-card:nth-child(5) { animation-delay: 0.20s; }
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* END-APEX-THEME */
+
+/* START-APEX-COMPACT (mobile size tuning only) */
+@media (max-width: 768px) {
+
+    body .admin-header { padding: 10px 12px !important; gap: 8px; }
+    body .admin-header h1 {
+        font-size: 15px !important;
+        font-weight: 700;
+        letter-spacing: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+    }
+    body .logout-btn { padding: 6px 12px !important; font-size: 12px !important; }
+
+    body .admin-container { padding: 8px !important; }
+
+    .admin-stats { gap: 8px; margin-bottom: 12px; }
+    .stat-card { padding: 9px 12px; border-radius: 12px; }
+    body .stat-card h3 {
+        font-size: 10px !important;
+        letter-spacing: 0.06em;
+        margin: 0 0 3px !important;
+    }
+    body .admin-stats .stat-card strong { font-size: 22px !important; }
+
+    body .admin-section { padding: 10px !important; border-radius: 16px; margin-bottom: 14px; }
+    body .admin-section h2 { font-size: 15px !important; margin-bottom: 8px !important; }
+    body .refresh-btn {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    body .order-group { margin-bottom: 12px; border-radius: 14px; }
+    body .order-group-title { font-size: 14px !important; padding: 10px 12px !important; }
+    body .order-count { height: 22px !important; min-width: 26px !important; font-size: 11px !important; }
+
+    .order-table-wrap tbody,
+    #depositsContainer tbody { padding-top: 8px; }
+
+    .order-table-wrap tbody tr {
+        padding: 10px 12px;
+        gap: 8px 10px;
+        border-radius: 12px;
+        margin: 0 8px 8px;
+    }
+    #depositsContainer tbody tr {
+        padding: 10px 12px;
+        gap: 8px 10px;
+        border-radius: 12px;
+        margin: 0 0 8px;
+    }
+
+    .order-table-wrap td,
+    #depositsContainer td { font-size: 13px; }
+
+    .order-table-wrap td::before,
+    #depositsContainer td::before {
+        font-size: 9px;
+        letter-spacing: 0.08em;
+        margin-bottom: 1px;
+    }
+
+    .order-table-wrap td:nth-child(1),
+    #depositsContainer td:nth-child(1) { font-size: 14px; }
+
+    .order-table-wrap td:nth-child(6),
+    #depositsContainer td:nth-child(3) { font-size: 14px; }
+
+    .order-table-wrap td:nth-child(8),
+    #depositsContainer td:nth-child(5) {
+        font-size: 11.5px;
+        padding: 6px 8px;
+        border-radius: 8px;
+    }
+
+    .status { font-size: 11px; padding: 3px 10px; }
+    .status[class*="status-"]::before { width: 5px; height: 5px; margin-right: 5px; }
+
+    .order-table-wrap td.order-actions { gap: 6px; padding-top: 8px; }
+    .order-table-wrap td.order-actions button,
+    #depositsContainer td:nth-child(8) button {
+        min-height: 36px;
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+    #depositsContainer td:nth-child(8) { padding-top: 8px; }
+
+    #paymentMethod,
+    #paymentNumber,
+    #paymentType,
+    #paymentNetwork,
+    #paymentImage { padding: 10px 12px; font-size: 14px; }
+
+    button[onclick="addPaymentAccount()"] { padding: 10px 14px; font-size: 14px; }
+    .payment-card { padding: 10px 12px; font-size: 13px; }
+}
+/* END-APEX-COMPACT */
+
