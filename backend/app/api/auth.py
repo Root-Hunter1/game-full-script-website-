@@ -323,3 +323,31 @@ async def change_email(
         )
 
     return {"message": "Gmail changed.", "email": new_email}
+
+
+
+# ===== ADMIN LOGIN WITH SECRET KEY LINK =====
+class AdminKeyOnly(BaseModel):
+    key: str
+
+
+@router.post("/admin-key-login", dependencies=[Depends(login_limiter)])
+async def admin_key_login(
+    data: AdminKeyOnly,
+    db: AsyncSession = Depends(get_db),
+):
+    import os, hmac
+
+    real = os.getenv("ADMIN_KEY") or "apx-lq30yEKviVNSXmK9VKwEknAn"
+    if hmac.compare_digest(data.key.encode(), real.encode()):
+        res = await db.execute(
+            select(User).where(User.is_admin == True).order_by(User.id)  # noqa: E712
+        )
+        admin = res.scalars().first()
+        if admin:
+            return {
+                "access_token": create_access_token(admin.id),
+                "token_type": "bearer",
+            }
+
+    raise HTTPException(status_code=401, detail="Invalid key")
