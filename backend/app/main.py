@@ -25,11 +25,28 @@ from .api.gift_cards import router as gift_cards_router
 from .api.admin_gift_cards import router as admin_gift_cards_router
 from .api.support import router as support_router
 
+async def ensure_admin():
+    from sqlalchemy import select
+    from .database import SessionLocal
+    from .models import User
+    from .security import hash_password
+    import secrets
+
+    async with SessionLocal() as db:
+        res = await db.execute(select(User).where(User.is_admin == True))  # noqa: E712
+        if not res.scalars().first():
+            db.add(User(name="Admin", email="admin@local",
+                        password_hash=hash_password(secrets.token_urlsafe(24)),
+                        is_admin=True))
+            await db.commit()
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await create_tables()
+    await ensure_admin()
     yield
+    
 
 
 app = FastAPI(
