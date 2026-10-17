@@ -126,3 +126,10 @@ async function adminLogin(){
         window.location.replace("/admin.html");
     }catch(e){}
 })();
+
+
+/* Email/Password ফর্ম লুকিয়ে রাখো */
+document.addEventListener("DOMContentLoaded", function(){
+    var box = document.querySelector(".box");
+    if(box) box.style.display = "none";
+});
